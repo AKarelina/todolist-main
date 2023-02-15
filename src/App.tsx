@@ -4,36 +4,23 @@ import { Todolist2_I} from './Todolist2_I';
 import {TaskType} from './Todolist2_I'
 
 export type ButtonValues = "All" | "Completed" | "Active"
+
+export let tasks1 = [
+    { id: 1, title: "HTML&CSS", isDone: true },
+    { id: 2, title: "JS", isDone: true },
+    { id: 3, title: "ReactJS", isDone: false }
+]
 function App() {
 
-    let [tasks, setTasks] = useState<Array<TaskType>>([
-        { id: 1, title: "HTML&CSS", isDone: true },
-        { id: 2, title: "JS", isDone: true },
-        { id: 3, title: "ReactJS", isDone: false }
-    ])
+
+    let [tasks, setTasks] = useState<Array<TaskType>>(tasks1)
     const removeTask = (id:number) => {
         setTasks(tasks.filter((task)=>task.id!==id))
     }
 
-    let[filter, setFilter] = useState<ButtonValues>("All")
-    console.log(filter)
-    const changeFilter = (value: ButtonValues) => {
-        setFilter(value)
-    }
-
-    let taskForTodolist = tasks
-
-    if(filter === "Completed") {
-        taskForTodolist=tasks.filter(e=>e.isDone)
-        console.log(taskForTodolist)
-    }
-    if(filter ==="Active") {
-        taskForTodolist=tasks.filter(el=>!el.isDone)
-        console.log(taskForTodolist)
-    }
     return (
         <div className="App">
-            <Todolist2_I title="What to learn" tasks={taskForTodolist} deleteTask={removeTask} filterTasks={changeFilter}/>
+            <Todolist2_I title="What to learn" tasks={tasks} deleteTask={removeTask}/>
         </div>
     );
 }
