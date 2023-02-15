@@ -1,5 +1,5 @@
 import React from "react";
-import './App.css';
+import '../src/App.css';
 
 type Todo1_IPropsType = {
     title: string,
@@ -13,7 +13,7 @@ type TasksType = {
     isDone: boolean
 }
 
-export const Todo1_I =(props:Todo1_IPropsType) =>{
+export const Todolist1_I =(props:Todo1_IPropsType) =>{
     return (
             <div>
                 <h3>{props.title}</h3>
@@ -23,9 +23,15 @@ export const Todo1_I =(props:Todo1_IPropsType) =>{
                     <button>+</button>
                 </div>
                 <ul>
-                    {props.tasks.map((task)=>{
+                    {props.tasks.map((task,index)=>{
                         return (
-                            <li key={task.id}><input type="checkbox" checked={task.isDone}/> <span>{task.title}</span></li>
+                            <div>
+                                <li key={task.id}><input type="checkbox" checked={task.isDone}/> <span>{task.title}</span>
+
+                                </li>
+
+                            </div>
+
                         )
                     })}
                     {/*<li><input type="checkbox" checked={props.tasks[0].isDone}/> <span>{props.tasks[0].title}</span></li>*/}
